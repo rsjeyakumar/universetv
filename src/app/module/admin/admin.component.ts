@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
     return this.planForm.controls;
   }
 
-  getSlotDetailsails() {
+  getAllPlans() {
     this.httpService.getPlans().subscribe(res => {
       this.planList = res;
     }
@@ -39,6 +39,26 @@ export class AdminComponent implements OnInit {
 
   addNewPlan() {
     this.addSlot = true;
+    this.planForm.reset();
+  }
+
+  submitPlan() {
+    if (this.planForm.valid) {
+      const postObj = {
+        fromTime: this.planForm.value.fromTime,
+        toTime: this.planForm.value.toTime,
+        planType: this.planForm.value.planType,
+      };
+      console.log(postObj);
+      // tslint:disable-next-line: deprecation
+      this.httpService.planSubmit(postObj).subscribe(user => {
+        console.log(user);
+        this.loader = false;
+        this.addSlot = false;
+      }, error => {
+        this.loader = false;
+      });
+    }
   }
 
   /*

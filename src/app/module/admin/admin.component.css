@@ -77,3 +77,5 @@
       padding: 2px;
       font-size: 100%;
   }
+  .customStyle {
+      margin-left: 15px !important;  }

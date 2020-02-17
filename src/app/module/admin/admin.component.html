@@ -39,7 +39,7 @@ margin-bottom: 5%;">
             <div class="form-group">
                 <label for="exampleInputEmail1">From Time</label>
                 <p-calendar [minDate]="minimumDate" [showTime]="true" [showSeconds]="true" formControlName="fromTime"
-                    class="col-12">
+                    class="col-12 customStyle">
                 </p-calendar>
                 <div *ngIf="plan.fromTime.touched && plan.fromTime.invalid" class="error">
                     <div *ngIf="plan.fromTime.errors && plan.fromTime.errors.required ">

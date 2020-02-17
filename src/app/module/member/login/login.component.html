@@ -41,3 +41,5 @@ margin-bottom: 5%;">
         </div>
     </div>
 </section>
+<app-loader [loader]="loader"></app-loader>
+<app-alert [sharedAlert]="httpService.showAlert" *ngIf="httpService.showAlert?.modalShow"></app-alert>

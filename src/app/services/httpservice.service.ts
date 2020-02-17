@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HttpserviceService {
   apiURL = environment.apiUrl;
+  loginUrl = environment.loginUrl;
   showAlert;
   constructor(private http: HttpClient) {
   }
@@ -27,13 +28,19 @@ export class HttpserviceService {
   * Type Object
   */
   checkLogin(data): Observable<any> {
-    return this.http.post(`${this.apiURL}/login`, data, this.httpOptions).pipe(
+    return this.http.post(`${this.loginUrl}/geekyants/login`, data, this.httpOptions).pipe(
       catchError(this.errorHandler.bind(this))
     );
   }
 
-  getPlans(data): Observable<any> {
+  getPlans(): Observable<any> {
     return this.http.get(`${this.apiURL}/plans`, this.httpOptions).pipe(
+      catchError(this.errorHandler.bind(this))
+    );
+  }
+
+  planSubmit(data): Observable<any> {
+    return this.http.post(`${this.apiURL}/geekyants/plans`, data, this.httpOptions).pipe(
       catchError(this.errorHandler.bind(this))
     );
   }

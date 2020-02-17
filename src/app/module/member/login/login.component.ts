@@ -45,10 +45,10 @@ export class LoginComponent implements OnInit {
             role: user.role
           };
           sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
-          if (user.role === 'Admin') {
+          if (user.role === 'ADMIN') {
             this.router.navigate(['admin']);
           }
-          if (user.role === 'Sales') {
+          if (user.role === 'SALESPERSON') {
             this.router.navigate(['sales']);
           }
           this.loader = false;

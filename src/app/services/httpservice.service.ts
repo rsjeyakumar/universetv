@@ -32,6 +32,11 @@ export class HttpserviceService {
     );
   }
 
+  getPlans(data): Observable<any> {
+    return this.http.get(`${this.apiURL}/plans`, this.httpOptions).pipe(
+      catchError(this.errorHandler.bind(this))
+    );
+  }
 
   /*
      * @param error

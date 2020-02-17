@@ -34,29 +34,28 @@ export class LoginComponent implements OnInit {
   validateLogin() {
     if (this.loginForm.valid) {
       const postObj = {
-        uName: this.loginForm.value.username,
+        mobileNumber: this.loginForm.value.username,
         password: this.loginForm.value.password
       };
-      // this.router.navigate(['/user']);
-      // tslint:disable-next-line: deprecation
-      this.httpService.checkLogin(postObj).subscribe(
-        user => {
-          console.log(user);
-          if (user.length !== 0) {
-            // const userDetails = {
-            //   customerId: user.userId
-            // };
-            this.router.navigate(['/user']);
-            // sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
-            this.loader = false;
-          } else {
-
+      this.httpService.checkLogin(postObj).subscribe(user => {
+        console.log(user);
+        if (user) {
+          const userDetails = {
+            userName: user.userName,
+            role: user.role
+          };
+          sessionStorage.setItem('currentUser', JSON.stringify(userDetails));
+          if (user.role === 'Admin') {
+            this.router.navigate(['admin']);
           }
-        },
-        error => {
+          if (user.role === 'Sales') {
+            this.router.navigate(['sales']);
+          }
           this.loader = false;
         }
-      );
+      }, error => {
+        this.loader = false;
+      });
     }
   }
 

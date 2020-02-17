@@ -13,6 +13,7 @@ import { MessageSubscriptionService } from '../app/services/message-subscription
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule
   ],

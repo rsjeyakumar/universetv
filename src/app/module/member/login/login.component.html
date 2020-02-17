@@ -11,12 +11,13 @@ margin-bottom: 5%;">
                         <div class="card-body">
                             <form [formGroup]="loginForm" (ngSubmit)="validateLogin();">
                                 <div class="form-group text-left">
-                                    <label for="email" class="links">User name<span class="required">*</span></label>
+                                    <label for="email" class="links">Mobile Number<span
+                                            class="required">*</span></label>
                                     <input type="text" formControlName="username" class="form-control"
-                                        placeholder="Enter User name" required>
+                                        placeholder="Enter Mobile Number" required>
                                     <div *ngIf="login.username.touched && login.username.invalid" class="error">
                                         <div *ngIf="login.username.errors && login.username.errors.required ">
-                                            User name is <strong>required</strong>
+                                            Mobile Number is <strong>required</strong>
                                         </div>
                                     </div>
                                 </div>
